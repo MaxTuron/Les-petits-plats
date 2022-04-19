@@ -1,3 +1,30 @@
 header{
-  width: 100%;
+  display: flex !important;
+  justify-content: center;
+}
+
+#rechercheRecette{
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: #aba9a9;
+  margin: 0 15% 0 15%;
+
+  input{
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    background-color: #aba9a9;
+    height: 44px;
+    box-sizing: border-box;
+  }
+  button{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 15px;
+    background-color: #aba9a9;
+    width: 4%;
+  }
 }
