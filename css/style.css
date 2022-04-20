@@ -40,5 +40,14 @@ header {
   border: black 5px solid;
   margin: 5px;
 }
+#listeRecettes .detailRecipe {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#listeRecettes .detailRecipe h1, #listeRecettes .detailRecipe p, #listeRecettes .detailRecipe div {
+  width: 100%;
+}
 
 /*# sourceMappingURL=style.css.map */

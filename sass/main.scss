@@ -40,4 +40,13 @@ header{
     border: black 5px solid;
     margin:5px;
   }
+  .detailRecipe {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    h1,p,div{
+      width: 100%;
+    }
+  }
 }

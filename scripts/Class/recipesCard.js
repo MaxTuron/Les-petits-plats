@@ -11,20 +11,38 @@ class recipesInfos {
         this.appliance = data.appliance
         this.ustensils = data.ustensils
     }
+    
+    carteDom() {
+        const infoRecipe = document.createElement("article");
+        infoRecipe.className=("recipeCards");
 
-    //CREATION DES CARTES DES RECETTES
-    creaCarteDom() {
-        const article = document.createElement("article");
-        article.classList.add("recipeCards");
-        article.innerHTML = `
-        <p>ID: ${this.id}</p>
-        <p>Nom: ${this.name}</p>
-        <p>Personnes: ${this.servings}</p>
-        <p>Temps: ${this.time}</p>
-        <p>Description: ${this.description}</p>
-        <p>Outil: ${this.appliance}</p>
-        <p>Ustensiles: ${this.ustensils}</p>
-     `;
-        return article;
+        const detailRecipe = document.createElement("div");
+        infoRecipe.appendChild(detailRecipe);
+        detailRecipe.className=("detailRecipe");
+        detailRecipe.innerHTML = `
+        <h1>${this.name}</h1>
+        <p>Temps: ${this.time}<i class="fas fa-clock"></i></p>`;
+        
+        const ingedientsRecipe = document.createElement("div");
+        detailRecipe.appendChild(ingedientsRecipe);
+        this.ingredients.forEach((ingredient) =>{
+            const ingedients = document.createElement("div");
+            ingedientsRecipe.appendChild(ingedients);
+
+            
+            if (ingredient.quantity===undefined){
+                ingredient.quantity="";
+            } 
+            if (ingredient.unit===undefined){
+                ingredient.unit="";
+            }
+            ingedients.innerHTML = `${ingredient.ingredient} : ${ingredient.quantity} ${ingredient.unit}`;
+        });
+
+        const descriptionRecipe = document.createElement("p");
+        detailRecipe.appendChild(descriptionRecipe);
+        descriptionRecipe.innerHTML=`${this.description}`;
+
+        return infoRecipe;
     }
 }
