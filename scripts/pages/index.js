@@ -1,7 +1,6 @@
 //Récupére toutes les recettes
 let searchArray = recipes;
 let recipeCard = document.querySelector("#listeRecettes");
-let inputSearch = document.getElementById("inputRecherche");
 
 function displayRecette(recipes) {
   recipeCard.innerHTML = "";
@@ -24,27 +23,40 @@ inputSearch.addEventListener("input", function(recipe) {
 function search() {
  //Vide toutes les recettes
   searchArray=[];
- let inputValue = inputSearch.value;
+ let inputValue = document.getElementById("inputRecherche").value;
 
  recipes.forEach(recipe =>{
-
-  if (recipe.name.includes(inputValue.toLowerCase()) ||recipe.description.includes(inputValue.toLowerCase()) || recipe.appliance.includes(inputValue.toLowerCase())) {
+  if (recipe.name.includes(inputValue) || recipe.appliance.includes(inputValue)) {
      searchArray.push(recipe);
   }
 
-  recipe.ingredients.forEach(ingredient =>{
-      if (ingredient.ingredient.includes(inputValue.toLowerCase())){
-          console.log(recipe);
-          searchArray.push(recipe);
-      }
-  });
+  if (searchArray.includes(recipe)===false) {
+      recipe.ingredients.forEach(ingredient =>{
+          if (ingredient.ingredient.includes(inputValue)) {
+              console.log(recipe);
+              searchArray.push(recipe);
+          }
+      });
+  }
+
 
    if (inputValue===undefined) {
        displayRecette(searchArray);
    }
  });
- console.log(searchArray);
  displayRecette(searchArray);
+}
+
+function searchIngredients(){
+    
+}
+
+function searchUstensiles(){
+
+}
+
+function searchAppliance(){
+
 }
 
 function init () {

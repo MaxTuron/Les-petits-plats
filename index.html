@@ -9,13 +9,29 @@
     </head>
     <body>
         <header>
-                <div id="rechercheRecette">
-                    <input id="inputRecherche" aria-label="inputRecherche" placeholder="Recherche">
-                    <button onclick="return search()" class="searchButton"><i class="fas fa-search"></i></button>
-                </div>
+            <img src="assets/logo/PetitsPlatsLogo.png">
+            <div id="rechercheRecette">
+                <input id="inputRecherche" aria-label="inputRecherche" placeholder="Recherche">
+                <button onclick="return search()" class="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+
         </header>
 
         <main>
+            <section id="filtres">
+                <div id="filtreIngredient">
+                    <input id="inputIngredient" aria-label="inputIngredient" placeholder="Rechercher un ingredient">
+                    <button onclick="return searchIngredients()" class="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+                <div id="filtreUstensiles">
+                    <input id="inputUstensiles" aria-label="inputUstensiles" placeholder="Rechercher un ustensiles">
+                    <button onclick="return searchUstensiles()" class="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+                <div id="filtreAppliance">
+                    <input id="inputAppliance" aria-label="inputAppliance" placeholder="Rechercher un ustensile">
+                    <button onclick="return searchAppliance()" class="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+            </section>
             <section id="listeRecettes">
                 <div class="resultat_recherche"></div>
             </section>
