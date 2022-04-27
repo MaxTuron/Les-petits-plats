@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="fr">
     <head>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8">
@@ -9,20 +9,20 @@
     </head>
     <body>
         <header>
-            <img src="assets/logo/PetitsPlatsLogo.png" alt="Logo Les Petits Plats">
+                <div id="rechercheRecette">
+                    <input id="inputRecherche" aria-label="inputRecherche" placeholder="Recherche">
+                    <button onclick="return search()" class="searchButton"><i class="fas fa-search"></i></button>
+                </div>
         </header>
+
         <main>
-            <div id="rechercheRecette">
-                <input id="inputRecherche" aria-label="inputRecherche" placeholder="Recherche">
-                <button class="searchButton"><i class="fas fa-search"></i></button>
-            </div>
-
-            <div id="filtresRecherche"></div>
-
-            <div id="listeRecettes"></div>
+            <section id="listeRecettes">
+                <div class="resultat_recherche"></div>
+            </section>
         </main>
-    </body>
 
-    <script type="module" src="scripts/pages/index.js"></script>
-    <script src="scripts/Class/recipesCard.js"></script>
+        <script src="data/recipes.js"></script>
+        <script src="scripts/Class/recipesCard.js"></script>
+        <script src="scripts/pages/index.js"></script>
+    </body>
 </html>

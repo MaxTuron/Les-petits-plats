@@ -3,6 +3,10 @@ header {
   justify-content: center;
 }
 
+#formSearch {
+  width: 100%;
+}
+
 #rechercheRecette {
   display: flex;
   justify-content: center;
