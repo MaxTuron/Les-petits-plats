@@ -40,10 +40,30 @@ header{
   margin: 0 5px 0 5px;
   .recipeCards {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     width: 32.5%;
-    border: black 5px solid;
+    border-radius: 15px;
+    background-color: #d3d1d1;
     margin:5px;
+    .recipeTitle{
+      width: 90%;
+    }
+    .recipeTime{
+      display: flex;
+      justify-content: center;
+      width: 10%;
+      height: 10%;
+    }
+    .recipeIngredients{
+      width: 30%;
+      margin: 5px;
+    }
+    .recipeDescription{
+      width: 50%;
+      height: 50%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   .detailRecipe {
     display: flex;
