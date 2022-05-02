@@ -4,14 +4,36 @@ let searchArray = recipes;
 let recipeCard = document.querySelector("#listeRecettes");
 let inputSearch = document.getElementById("inputRecherche");
 
-function displayRecette(recipes) {
+function displayRecette(searchArray) {
   recipeCard.innerHTML = "";
-  recipes.forEach(recipe => {
+    searchArray.forEach(recipe => {
     const recipeInfo = new recipesInfos(recipe);
-    const recipeInfoCard = recipeInfo .carteDom();
+    const recipeInfoCard = recipeInfo.carteDom();
     recipeCard.appendChild(recipeInfoCard);
   });
 }
+
+function displayElements(searchArray){
+    let ingredientCard = document.querySelector("#ingredients");
+    let applianceCard = document.querySelector("#appliances");
+    let unstensilsCard = document.querySelector("#ustensils");
+    searchArray.forEach(recipe => {
+        const recipeInfo = new recipesElements(recipe);
+        
+        const recipeApplianceCard = recipeInfo.applianceDom();
+        applianceCard.appendChild(recipeApplianceCard);
+        
+        recipe.ustensils.forEach(ustensil => {
+            const recipeUstensilCard = recipeInfo.ustensilsDom(ustensil);
+            unstensilsCard.appendChild(recipeUstensilCard);
+        });
+        recipe.ingredients.forEach(ingredient => {
+            const recipeIngredientCard = recipeInfo.ingredientDom(ingredient);
+            ingredientCard.appendChild(recipeIngredientCard);
+        });
+    });
+}
+
 
 inputSearch.addEventListener("keydown", function(recipe) {
     if(inputSearch.value.length>=3) {
@@ -43,18 +65,6 @@ function search() {
  });
  displayRecette(searchArray);
  displayElements(searchArray);
-}
-
-function displayElements(recipes){
-    recipes.forEach(recipe => {
-        console.log(recipe.appliance);
-        recipe.ustensils.forEach(ustensil => {
-            console.log(ustensil);
-        });
-        recipe.ingredients.forEach(ingredient => {
-            console.log(ingredient.ingredient);
-        });
-    });
 }
 
 function searchIngredients(){
