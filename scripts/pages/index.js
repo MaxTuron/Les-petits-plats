@@ -17,7 +17,9 @@ function displayElements(searchArray){
     let ingredientCard = document.querySelector("#ingredients");
     let applianceCard = document.querySelector("#appliances");
     let unstensilsCard = document.querySelector("#ustensils");
-    
+    ingredientCard.innerHTML = "";
+    applianceCard.innerHTML = "";
+    unstensilsCard.innerHTML = "";
     let ingredientArray =[];
     let applianceArray =[];
     let ustensilsArray =[];
@@ -50,13 +52,10 @@ function displayElements(searchArray){
     });
 
     ingredientArray.forEach(ingredient => {
-        console.log(ingredient)
         let ingredientModel = ingredientFactory(ingredient);
         let ingredientDom = ingredientModel.ingredientDOM();
         ingredientCard.appendChild(ingredientDom);
     });
-
-
     console.log(applianceArray);
     console.log(ustensilsArray);
     console.log(ingredientArray);
@@ -68,6 +67,7 @@ inputSearch.addEventListener("keydown", function(recipe) {
         search();
     }else if (inputSearch.value.length<3){
         displayRecette(fullArray);
+        displayElements(fullArray);
     }
 });
 
