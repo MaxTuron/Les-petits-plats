@@ -1,38 +1,45 @@
-class recipesElements {
-    constructor(data) {
-        this.ingredients = data.ingredients
-        this.appliance = data.appliance
-        this.ustensils = data.ustensils
+function applianceFactory(data) {
+    let appliance = data;
+
+    function applianceDOM() {
+        let allAppliance = document.createElement("ul");
+
+        let appliances = document.createElement("li");
+        allAppliance.appendChild(appliances);
+        appliances.innerHTML = `${appliance}`;
+
+        return (allAppliance);
     }
+    return {appliance, applianceDOM}
+}
 
-    applianceDom() {
-        const allAppliance = document.createElement("ul");
 
-        const appliance = document.createElement("li");
-        allAppliance.appendChild(appliance);
-        appliance.innerHTML = `${this.appliance}`;
+function ustensilsFactory(data) {
+    let ustensils = data;
 
-        return allAppliance;
-    }
-
-    ustensilsDom() {
+    function ustensilsDOM() {
         const allUstensils = document.createElement("ul");
 
-        const ustensils = document.createElement("li");
-        allUstensils.appendChild(ustensils);
-        ustensils.innerHTML = `${this.ustensils}`;
+        const ustensil = document.createElement("li");
+        allUstensils.appendChild(ustensil);
+        ustensil.innerHTML = `${ustensils}`;
 
         return allUstensils;
     }
+    return {ustensils, ustensilsDOM}
+}
 
-    ingredientDom(data) {
-        const {ingredient} = data;
+function ingredientFactory(data) {
+    let ingredient = data;
+
+    function ingredientDOM() {
         const allIngredients = document.createElement("ul");
 
         const ingredients = document.createElement("li");
         allIngredients.appendChild(ingredients);
         ingredients.innerHTML = `${ingredient}`;
-        
+
         return allIngredients;
     }
+    return {ingredient, ingredientDOM}
 }

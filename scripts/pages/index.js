@@ -17,21 +17,49 @@ function displayElements(searchArray){
     let ingredientCard = document.querySelector("#ingredients");
     let applianceCard = document.querySelector("#appliances");
     let unstensilsCard = document.querySelector("#ustensils");
+    
+    let ingredientArray =[];
+    let applianceArray =[];
+    let ustensilsArray =[];
     searchArray.forEach(recipe => {
-        const recipeInfo = new recipesElements(recipe);
-        
-        const recipeApplianceCard = recipeInfo.applianceDom();
-        applianceCard.appendChild(recipeApplianceCard);
-        
+        if (applianceArray.includes(recipe.appliance)===false) {
+            applianceArray.push(recipe.appliance);
+        }
         recipe.ustensils.forEach(ustensil => {
-            const recipeUstensilCard = recipeInfo.ustensilsDom(ustensil);
-            unstensilsCard.appendChild(recipeUstensilCard);
+            if (ustensilsArray.includes(ustensil)===false) {
+                ustensilsArray.push(ustensil);
+            }
         });
         recipe.ingredients.forEach(ingredient => {
-            const recipeIngredientCard = recipeInfo.ingredientDom(ingredient);
-            ingredientCard.appendChild(recipeIngredientCard);
+            if (ingredientArray.includes(ingredient.ingredient)===false) {
+                ingredientArray.push(ingredient.ingredient);
+            }
         });
     });
+
+    applianceArray.forEach(appliance => {
+        let applianceModel = applianceFactory(appliance);
+        let applianceDom = applianceModel.applianceDOM();
+        applianceCard.appendChild(applianceDom);
+    });
+
+    ustensilsArray.forEach(ustensil => {
+        let ustensilModel = ustensilsFactory(ustensil);
+        let unstensilDom = ustensilModel.ustensilsDOM();
+        unstensilsCard.appendChild(unstensilDom);
+    });
+
+    ingredientArray.forEach(ingredient => {
+        console.log(ingredient)
+        let ingredientModel = ingredientFactory(ingredient);
+        let ingredientDom = ingredientModel.ingredientDOM();
+        ingredientCard.appendChild(ingredientDom);
+    });
+
+
+    console.log(applianceArray);
+    console.log(ustensilsArray);
+    console.log(ingredientArray);
 }
 
 
@@ -44,27 +72,26 @@ inputSearch.addEventListener("keydown", function(recipe) {
 });
 
 function search() {
- //Vide toutes les recettes
-  searchArray=[];
- let inputValue = document.getElementById("inputRecherche").value;
-
- recipes.forEach(recipe =>{
-  if (searchArray.includes(recipe)===false) {
-      if (recipe.name.toLowerCase().includes(inputValue.toLowerCase()) || recipe.appliance.toLowerCase().includes(inputValue.toLowerCase())) {
-          searchArray.push(recipe);
-      }
-      recipe.ingredients.forEach(ingredient =>{
-          if (ingredient.ingredient.toLowerCase().includes(inputValue.toLowerCase())) {
-              console.log(recipe);
-              if (searchArray.includes(recipe)===false) {
-                  searchArray.push(recipe);
-              }
-          }
-      });
-  }
- });
- displayRecette(searchArray);
- displayElements(searchArray);
+    searchArray=[];
+    let inputValue = document.getElementById("inputRecherche").value;
+    
+    recipes.forEach(recipe =>{
+        if (searchArray.includes(recipe)===false) {
+            if (recipe.name.toLowerCase().includes(inputValue.toLowerCase()) || recipe.appliance.toLowerCase().includes(inputValue.toLowerCase())) {
+                searchArray.push(recipe);
+            }
+            recipe.ingredients.forEach(ingredient =>{
+                if (ingredient.ingredient.toLowerCase().includes(inputValue.toLowerCase())) {
+                    console.log(recipe);
+                    if (searchArray.includes(recipe)===false) {
+                        searchArray.push(recipe);
+                    }
+                }
+            });
+        }
+    });
+    displayRecette(searchArray);
+    displayElements(searchArray);
 }
 
 function searchIngredients(){
