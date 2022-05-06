@@ -3,6 +3,9 @@ let fullArray = recipes;
 let searchArray = recipes;
 let recipeCard = document.querySelector("#listeRecettes");
 let inputSearch = document.getElementById("inputRecherche");
+let inputAppliance= document.getElementById("inputAppliance");
+let inputUstensils = document.getElementById("inputUstensils");
+let inputIngredient = document.getElementById("inputIngredient");
 
 function displayRecette(searchArray) {
   recipeCard.innerHTML = "";
@@ -14,9 +17,9 @@ function displayRecette(searchArray) {
 }
 
 function displayElements(searchArray){
-    let ingredientCard = document.querySelector("#ingredients");
-    let applianceCard = document.querySelector("#appliances");
-    let unstensilsCard = document.querySelector("#ustensils");
+    let ingredientCard = document.querySelector("#listeIngredient");
+    let applianceCard = document.querySelector("#listeAppliances");
+    let unstensilsCard = document.querySelector("#listeUstensils");
     ingredientCard.innerHTML = "";
     applianceCard.innerHTML = "";
     unstensilsCard.innerHTML = "";
@@ -24,17 +27,17 @@ function displayElements(searchArray){
     let applianceArray =[];
     let ustensilsArray =[];
     searchArray.forEach(recipe => {
-        if (applianceArray.includes(recipe.appliance)===false) {
-            applianceArray.push(recipe.appliance);
+        if (applianceArray.includes(recipe.appliance.toLowerCase())===false) {
+            applianceArray.push(recipe.appliance.toLowerCase());
         }
         recipe.ustensils.forEach(ustensil => {
-            if (ustensilsArray.includes(ustensil)===false) {
-                ustensilsArray.push(ustensil);
+            if (ustensilsArray.includes(ustensil.toLowerCase())===false) {
+                ustensilsArray.push(ustensil.toLowerCase());
             }
         });
         recipe.ingredients.forEach(ingredient => {
-            if (ingredientArray.includes(ingredient.ingredient)===false) {
-                ingredientArray.push(ingredient.ingredient);
+            if (ingredientArray.includes(ingredient.ingredient.toLowerCase())===false) {
+                ingredientArray.push(ingredient.ingredient.toLowerCase());
             }
         });
     });
@@ -71,6 +74,33 @@ inputSearch.addEventListener("keydown", function(recipe) {
     }
 });
 
+inputAppliance.addEventListener("keydown", function(recipe) {
+    if(inputAppliance.value.length>=3) {
+        searchAppliance();
+    }else if (inputAppliance.value.length<3){
+        displayRecette(fullArray);
+        displayElements(fullArray);
+    }
+});
+
+inputUstensils.addEventListener("keydown", function(recipe) {
+    if(inputUstensils.value.length>=3) {
+        searchUstensiles();
+    }else if (inputUstensils.value.length<3){
+        displayRecette(fullArray);
+        displayElements(fullArray);
+    }
+});
+
+inputIngredient.addEventListener("keydown", function(recipe) {
+    if(inputIngredient.value.length>=3) {
+        searchIngredients();
+    }else if (inputIngredient.value.length<3){
+        displayRecette(fullArray);
+        displayElements(fullArray);
+    }
+});
+
 function search() {
     searchArray=[];
     let inputValue = document.getElementById("inputRecherche").value;
@@ -94,16 +124,48 @@ function search() {
     displayElements(searchArray);
 }
 
+//Tri dans les ingredients restant 
 function searchIngredients(){
-    
+    let allIngredients = document.querySelectorAll(".elementIngredients");
+    let inputIngredientsValue = inputIngredient.value;
+    allIngredients.forEach(ingredient =>{
+        if(ingredient.innerText.toLowerCase().includes(inputIngredientsValue.toLowerCase())){
+            //Display block
+            ingredient.style.display="block";
+        } else {
+            //Display none
+            ingredient.style.display="none";
+        };
+    });
 }
-
+//Tri dans les ustensiles restant 
 function searchUstensiles(){
-
+    let allUstensils = document.querySelectorAll(".elementUstensil");
+    let inputUstensilValue = inputUstensils.value;
+    allUstensils.forEach(ustensil =>{
+        if(ustensil.innerText.toLowerCase().includes(inputUstensilValue.toLowerCase())){
+            //Display block
+            ustensil.style.display="block";
+        } else {
+            //Display none
+            ustensil.style.display="none";
+        };
+    });
 }
 
-function searchAppliance(){
-
+//Tri dans les appareils restant 
+function searchAppliance() {
+    let allAppliance = document.querySelectorAll(".elementAppliance");
+    let inputApplianceValue = inputAppliance.value;
+    allAppliance.forEach(appliance =>{
+        if(appliance.innerText.toLowerCase().includes(inputApplianceValue.toLowerCase())){
+            //Appliance display OK
+            appliance.style.display="block";
+        } else {
+            //Display none
+            appliance.style.display="none";
+        };
+    });
 }
 
 function init () {
