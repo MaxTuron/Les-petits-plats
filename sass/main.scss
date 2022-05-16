@@ -80,7 +80,37 @@ header{
   display: flex;
   flex-direction: row;
   margin: 15px;
-  #filtreUstensiles{
-    margin: 0 10px 0 10px;
+  #inputIngredient{
+    border: none;
+    background-color: blue;
+    color: white;
   }
+  #inputAppliance{
+    margin: 0 10px 0 10px;
+    border: none;
+    background-color: green;
+    color: white;
+  }
+  #inputUstensils{
+    border: none;
+    background-color: red;
+    color: white;
+  }
+}
+
+#listeAppliances, #listeIngredient, #listeUstensils{
+  display: none;
+  color: white;
+}
+
+#listeIngredient{
+  background-color: blue;
+}
+
+#listeAppliances{
+  background-color: green;
+}
+
+#listeUstensils{
+  background-color: red;
 }

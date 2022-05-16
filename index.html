@@ -19,17 +19,14 @@
         <main>
             <section id="filtres">
                 <div id="filtreIngredient">
-                    <input id="inputIngredient" aria-label="inputIngredient" placeholder="Rechercher un ingredient">
-                </div>
-                <div id="filtreUstensiles">
-                    <input id="inputUstensils" aria-label="inputUstensiles" placeholder="Rechercher un ustensile">
+                    <input id="inputIngredient" aria-label="inputIngredient" placeholder="Ingredients">
                 </div>
                 <div id="filtreAppliance">
-                    <input id="inputAppliance" aria-label="inputAppliance" placeholder="Rechercher un appareil">
+                    <input id="inputAppliance" aria-label="inputAppliance" placeholder="Appareils">
                 </div>
-            </section>
-            <section id="listeRecettes">
-                <div class="resultat_recherche"></div>
+                <div id="filtreUstensile">
+                    <input id="inputUstensils" aria-label="inputUstensiles" placeholder="Ustensiles">
+                </div>
             </section>
             <section>
                 <div id="ingredients">
@@ -42,11 +39,15 @@
                     <ul id="listeAppliances"></ul>
                 </div>
             </section>
+            <section id="listeRecettes">
+                <div class="resultat_recherche"></div>
+            </section>
         </main>
 
         <script src="data/recipes.js"></script>
         <script src="scripts/class/recipesCard.js"></script>
         <script src="scripts/class/elementsCard.js"></script>
+        <script src="scripts/utils/modal.js"></script>
         <script src="scripts/pages/index.js"></script>
     </body>
 </html>
