@@ -80,21 +80,36 @@ header{
   display: flex;
   flex-direction: row;
   margin: 15px;
-  #inputIngredient{
+  #filtreIngredient{
     border: none;
     background-color: blue;
     color: white;
+    #inputIngredient{
+      background-color: transparent;
+      border: none;
+      color: white;
+    }
   }
-  #inputAppliance{
+  #filtreAppliance{
     margin: 0 10px 0 10px;
     border: none;
     background-color: green;
     color: white;
+    #inputAppliance{
+      background-color: transparent;
+      border: none;
+      color: white;
+    }
   }
-  #inputUstensils{
+  #filtreUstensils{
     border: none;
     background-color: red;
     color: white;
+    #inputUstensils{
+      background-color: transparent;
+      border: none;
+      color: white;
+    }
   }
 }
 

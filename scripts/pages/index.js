@@ -1,12 +1,14 @@
 //Récupére toutes les recettes
 let fullArray = recipes;
 let searchArray = recipes;
+//Récupération des differents elements html
 let recipeCard = document.querySelector("#listeRecettes");
 let inputSearch = document.getElementById("inputRecherche");
 let inputAppliance= document.getElementById("inputAppliance");
 let inputUstensils = document.getElementById("inputUstensils");
 let inputIngredient = document.getElementById("inputIngredient");
 
+//Affichage des recettes
 function displayRecette(searchArray) {
   recipeCard.innerHTML = "";
     searchArray.forEach(recipe => {
@@ -16,6 +18,7 @@ function displayRecette(searchArray) {
   });
 }
 
+//Affichages de éléments
 function displayElements(searchArray){
     let ingredientCard = document.querySelector("#listeIngredient");
     let applianceCard = document.querySelector("#listeAppliances");
@@ -64,7 +67,7 @@ function displayElements(searchArray){
     console.log(ingredientArray);
 }
 
-
+//Input recherche globale
 inputSearch.addEventListener("keydown", function(recipe) {
     if(inputSearch.value.length>=3) {
         search();
@@ -74,33 +77,48 @@ inputSearch.addEventListener("keydown", function(recipe) {
     }
 });
 
+//Input recherche appliance
 inputAppliance.addEventListener("keydown", function(recipe) {
     if(inputAppliance.value.length>=3) {
         searchAppliance();
     }else if (inputAppliance.value.length<3){
-        displayRecette(fullArray);
-        displayElements(fullArray);
+        let allAppliance = document.querySelectorAll(".elementAppliance");
+        allAppliance.forEach(appliance =>{
+            appliance.style.display="block";
+        });
     }
 });
 
+//Input recherche ustensiles
 inputUstensils.addEventListener("keydown", function(recipe) {
     if(inputUstensils.value.length>=3) {
         searchUstensiles();
-    }else if (inputUstensils.value.length<3){
-        displayRecette(fullArray);
-        displayElements(fullArray);
+    }else if (inputUstensils.value.length<3) {
+        let allUstensils = document.querySelectorAll(".elementUstensil");
+        allUstensils.forEach(ustensil => {
+            ustensil.style.display = "block";
+        });
     }
 });
 
+//Input recherche ingredients
 inputIngredient.addEventListener("keydown", function(recipe) {
-    if(inputIngredient.value.length>=3) {
+    if (inputIngredient.value.length >= 3) {
         searchIngredients();
-    }else if (inputIngredient.value.length<3){
-        displayRecette(fullArray);
-        displayElements(fullArray);
+    } else if (inputIngredient.value.length < 3) {
+        let allIngredients = document.querySelectorAll(".elementIngredients");
+        allIngredients.forEach(ingredient => {
+            ingredient.style.display = "block";
+        });
     }
 });
 
+
+
+
+
+
+//Fonction de recherche globale
 function search() {
     searchArray=[];
     let inputValue = document.getElementById("inputRecherche").value;

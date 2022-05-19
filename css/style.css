@@ -82,20 +82,35 @@ header img {
   flex-direction: row;
   margin: 15px;
 }
-#filtres #inputIngredient {
+#filtres #filtreIngredient {
   border: none;
   background-color: blue;
   color: white;
 }
-#filtres #inputAppliance {
+#filtres #filtreIngredient #inputIngredient {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+#filtres #filtreAppliance {
   margin: 0 10px 0 10px;
   border: none;
   background-color: green;
   color: white;
 }
-#filtres #inputUstensils {
+#filtres #filtreAppliance #inputAppliance {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+#filtres #filtreUstensils {
   border: none;
   background-color: red;
+  color: white;
+}
+#filtres #filtreUstensils #inputUstensils {
+  background-color: transparent;
+  border: none;
   color: white;
 }
 
