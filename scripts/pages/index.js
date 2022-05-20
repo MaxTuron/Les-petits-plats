@@ -113,11 +113,6 @@ inputIngredient.addEventListener("keydown", function(recipe) {
     }
 });
 
-
-
-
-
-
 //Fonction de recherche globale
 function search() {
     searchArray=[];

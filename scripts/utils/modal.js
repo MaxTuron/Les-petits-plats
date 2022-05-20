@@ -19,8 +19,26 @@ inputIngredient.addEventListener("focus", event =>{
 
 document.querySelectorAll(".elementAppliance").forEach(appliance =>{
     appliance.addEventListener('click', event =>{
-        console.log(event.target);
-        console.log(appliance.innerHTML);
+        let newTag = appliance.innerHTML;
+        let applianceTagCard = document.querySelector("#listeTag");
+
+        let applianceTagModel = applianceTagFactory(newTag);
+        let applianceTagDom = applianceTagModel.applianceTagDOM();
+        applianceTagCard.appendChild(applianceTagDom);
+        
+        modalAppliance.style.display="none";
+        modalUstensils.style.display="none";
+        modalIngredient.style.display="none";
+    })
+});
+
+document.querySelectorAll(".elementUstensil").forEach(ustensile =>{
+    ustensile.addEventListener('click', event =>{
+        let newTag = ustensile.innerHTML;
+        console.log(newTag);
+        modalAppliance.style.display="none";
+        modalUstensils.style.display="none";
+        modalIngredient.style.display="none";
     })
 });
 

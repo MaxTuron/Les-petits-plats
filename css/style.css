@@ -117,6 +117,7 @@ header img {
 #listeAppliances, #listeIngredient, #listeUstensils {
   display: none;
   color: white;
+  list-style-type: none;
 }
 
 #listeIngredient {
@@ -129,6 +130,18 @@ header img {
 
 #listeUstensils {
   background-color: red;
+}
+
+#listeTag {
+  display: flex;
+  flex-direction: row;
+}
+
+[data-tagtype=applianceTag] {
+  width: 5%;
+  color: green;
+  border: 5px black solid;
+  margin: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */
