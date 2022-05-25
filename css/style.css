@@ -138,8 +138,22 @@ header img {
 }
 
 [data-tagtype=applianceTag] {
-  width: 5%;
+  width: auto;
   color: green;
+  border: 5px black solid;
+  margin: 5px;
+}
+
+[data-tagtype=ustensilsTag] {
+  width: auto;
+  color: red;
+  border: 5px black solid;
+  margin: 5px;
+}
+
+[data-tagtype=ingredientsTag] {
+  width: auto;
+  color: blue;
   border: 5px black solid;
   margin: 5px;
 }

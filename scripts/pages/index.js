@@ -1,6 +1,7 @@
 //Récupére toutes les recettes
 let fullArray = recipes;
 let searchArray = recipes;
+
 //Récupération des differents elements html
 let recipeCard = document.querySelector("#listeRecettes");
 let inputSearch = document.getElementById("inputRecherche");
@@ -16,6 +17,69 @@ function displayRecette(searchArray) {
     const recipeInfoCard = recipeInfo.carteDom();
     recipeCard.appendChild(recipeInfoCard);
   });
+}
+
+function applyEventListener() {
+
+    document.querySelectorAll(".elementAppliance").forEach(appliance => {
+        appliance.addEventListener('click', event => {
+            let newTag = "appliance-" + appliance.innerHTML;
+            let tagArray=[];
+            if (tagArray.includes(newTag) === false) {
+
+                tagArray.push(newTag);
+                console.log(tagArray);
+                let tagSplit = newTag.split('-');
+                console.log(tagSplit[0]);
+                console.log(tagSplit[1]);
+                
+                let applianceTagCard = document.querySelector("#listeTag");
+
+                let applianceTagModel = applianceTagFactory(newTag);
+                let applianceTagDom = applianceTagModel.applianceTagDOM();
+                applianceTagCard.appendChild(applianceTagDom);
+                
+            }
+        })
+    });
+
+
+    document.querySelectorAll(".elementUstensil").forEach(ustensil => {
+        ustensil.addEventListener('click', event => {
+            let newTag = "ustensil-" + ustensil.innerHTML;
+            let tagArray=[];
+            if (tagArray.includes(newTag) === false) {
+                
+                tagArray.push(newTag);
+                console.log(tagArray);
+                console.log(newTag.split('-'));
+                
+                let unstensilTagCard = document.querySelector("#listeTag");
+
+                let ustensilTagModel = ustensilsTagFactory(newTag);
+                let ustensilsTagDOM = ustensilTagModel.ustensilsTagDOM();
+                unstensilTagCard.appendChild(ustensilsTagDOM);
+            }
+        })
+    });
+
+    document.querySelectorAll(".elementIngredients").forEach(ingredient => {
+        ingredient.addEventListener('click', event => {
+            let newTag = "ingredient-" + ingredient.innerHTML;
+            let tagArray=[];
+            if (tagArray.includes(newTag) === false) {
+                
+                tagArray.push(newTag);
+                console.log(tagArray);
+                console.log(newTag.split('-'));
+                
+                let ingredientTagCard = document.querySelector("#listeTag");
+                let ingredientTagModel = ingredientsTagFactory(newTag);
+                let ingredientTagDOM = ingredientTagModel.ingredientsTagDOM();
+                ingredientTagCard.appendChild(ingredientTagDOM);
+            }
+        })
+    });
 }
 
 //Affichages de éléments
@@ -62,9 +126,7 @@ function displayElements(searchArray){
         let ingredientDom = ingredientModel.ingredientDOM();
         ingredientCard.appendChild(ingredientDom);
     });
-    console.log(applianceArray);
-    console.log(ustensilsArray);
-    console.log(ingredientArray);
+    applyEventListener();
 }
 
 //Input recherche globale
@@ -114,7 +176,7 @@ inputIngredient.addEventListener("keydown", function(recipe) {
 });
 
 //Fonction de recherche globale
-function search() {
+function search(tagSplit) {
     searchArray=[];
     let inputValue = document.getElementById("inputRecherche").value;
     
@@ -125,7 +187,6 @@ function search() {
             }
             recipe.ingredients.forEach(ingredient =>{
                 if (ingredient.ingredient.toLowerCase().includes(inputValue.toLowerCase())) {
-                    console.log(recipe);
                     if (searchArray.includes(recipe)===false) {
                         searchArray.push(recipe);
                     }
@@ -148,7 +209,7 @@ function searchIngredients(){
         } else {
             //Display none
             ingredient.style.display="none";
-        };
+        }
     });
 }
 //Tri dans les ustensiles restant 
@@ -162,7 +223,7 @@ function searchUstensiles(){
         } else {
             //Display none
             ustensil.style.display="none";
-        };
+        }
     });
 }
 
@@ -177,13 +238,13 @@ function searchAppliance() {
         } else {
             //Display none
             appliance.style.display="none";
-        };
+        }
     });
 }
 
 function init () {
-  displayRecette(searchArray);
-  displayElements(searchArray);
+  displayRecette(fullArray);
+  displayElements(fullArray);
 }
 
 init ();
