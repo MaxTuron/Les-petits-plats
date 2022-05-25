@@ -175,6 +175,15 @@ inputIngredient.addEventListener("keydown", function(recipe) {
     }
 });
 
+function deleteTag() {
+    document.addEventListener("click", event => {
+        if (event.target.className.includes("close") === true) {
+            let fullTag = event.target.parentNode;
+            fullTag.remove();
+        }
+    });
+};
+
 //Fonction de recherche globale
 function search(tagSplit) {
     searchArray=[];
@@ -245,6 +254,7 @@ function searchAppliance() {
 function init () {
   displayRecette(fullArray);
   displayElements(fullArray);
+  deleteTag();
 }
 
 init ();

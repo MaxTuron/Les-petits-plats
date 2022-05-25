@@ -7,11 +7,6 @@ function applianceTagFactory(data) {
         appliancesTag.innerHTML = `${appliance} <i class="fas fa-times close"></i>`;
         appliance.className="tag";
         appliancesTag.setAttribute("data-tagtype","applianceTag");
-
-        let btnClose = appliancesTag.querySelector(".close");
-        btnClose.addEventListener('click', event =>{
-            appliancesTag.remove();
-        });
         
         return (appliancesTag);
     }
@@ -28,11 +23,6 @@ function ustensilsTagFactory(data) {
         ustensil.className="tag";
         ustensilsTag.setAttribute("data-tagtype","ustensilsTag");
         
-        let btnClose = ustensilsTag.querySelector(".close");
-        btnClose.addEventListener('click', event =>{
-            ustensilsTag.remove();
-        });
-        
         return (ustensilsTag);
     }
     return {ustensil, ustensilsTagDOM}
@@ -47,11 +37,6 @@ function ingredientsTagFactory(data) {
         ingredientsTag.innerHTML = `${ingredient} <i class="fas fa-times close"></i>`;
         ingredient.className="tag";
         ingredientsTag.setAttribute("data-tagtype","ingredientsTag");
-
-        let btnClose = ingredientsTag.querySelector(".close");
-        btnClose.addEventListener('click', event =>{
-            ingredientsTag.remove();
-        });
         
         return (ingredientsTag);
     }
