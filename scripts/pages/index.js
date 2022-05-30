@@ -1,6 +1,7 @@
 //Récupére toutes les recettes
 let fullArray = recipes;
 let searchArray = recipes;
+let tagArray=[];
 
 //Récupération des differents elements html
 let recipeCard = document.querySelector("#listeRecettes");
@@ -24,22 +25,17 @@ function applyEventListener() {
     document.querySelectorAll(".elementAppliance").forEach(appliance => {
         appliance.addEventListener('click', event => {
             let newTag = "appliance-" + appliance.innerHTML;
-            let tagArray=[];
             if (tagArray.includes(newTag) === false) {
 
                 tagArray.push(newTag);
-                console.log(tagArray);
-                let tagSplit = newTag.split('-');
-                console.log(tagSplit[0]);
-                console.log(tagSplit[1]);
                 
                 let applianceTagCard = document.querySelector("#listeTag");
 
                 let applianceTagModel = applianceTagFactory(newTag);
                 let applianceTagDom = applianceTagModel.applianceTagDOM();
                 applianceTagCard.appendChild(applianceTagDom);
-                
             }
+            searchWithTag();
         })
     });
 
@@ -47,12 +43,9 @@ function applyEventListener() {
     document.querySelectorAll(".elementUstensil").forEach(ustensil => {
         ustensil.addEventListener('click', event => {
             let newTag = "ustensil-" + ustensil.innerHTML;
-            let tagArray=[];
             if (tagArray.includes(newTag) === false) {
                 
                 tagArray.push(newTag);
-                console.log(tagArray);
-                console.log(newTag.split('-'));
                 
                 let unstensilTagCard = document.querySelector("#listeTag");
 
@@ -60,24 +53,23 @@ function applyEventListener() {
                 let ustensilsTagDOM = ustensilTagModel.ustensilsTagDOM();
                 unstensilTagCard.appendChild(ustensilsTagDOM);
             }
+            searchWithTag();
         })
     });
 
     document.querySelectorAll(".elementIngredients").forEach(ingredient => {
         ingredient.addEventListener('click', event => {
             let newTag = "ingredient-" + ingredient.innerHTML;
-            let tagArray=[];
             if (tagArray.includes(newTag) === false) {
                 
                 tagArray.push(newTag);
-                console.log(tagArray);
-                console.log(newTag.split('-'));
                 
                 let ingredientTagCard = document.querySelector("#listeTag");
                 let ingredientTagModel = ingredientsTagFactory(newTag);
                 let ingredientTagDOM = ingredientTagModel.ingredientsTagDOM();
                 ingredientTagCard.appendChild(ingredientTagDOM);
             }
+            searchWithTag();
         })
     });
 }
@@ -175,17 +167,29 @@ inputIngredient.addEventListener("keydown", function(recipe) {
     }
 });
 
+//Suppression du tag en HTML et dans le tableau des tags
 function deleteTag() {
     document.addEventListener("click", event => {
         if (event.target.className.includes("close") === true) {
             let fullTag = event.target.parentNode;
+            let tagValue = fullTag.innerText;
+            
+            //permet de supprimer le tag visuellement (HTML balise <p>)
             fullTag.remove();
+            
+            //Permet de supprimer le tag du tableau
+            for (i=0; i <tagValue.length; i++){
+                if (tagArray[i] === tagValue){
+                    tagArray.splice(i,1);
+                }
+            }
+            searchWithTag();
         }
     });
 };
 
 //Fonction de recherche globale
-function search(tagSplit) {
+function search() {
     searchArray=[];
     let inputValue = document.getElementById("inputRecherche").value;
     
@@ -203,8 +207,41 @@ function search(tagSplit) {
             });
         }
     });
+    
     displayRecette(searchArray);
     displayElements(searchArray);
+    console.log(tagArray);
+    console.log(searchArray);
+}
+
+function searchWithTag() {
+    let recipeArrayTag = [];
+    searchArray.forEach(recipe => {
+        tagArray.forEach(tag => {
+            let actualTag = tag.split("-");
+
+            if (recipeArrayTag.includes(recipe) === false && actualTag[0] === "appliance" && recipe.appliance.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                recipeArrayTag.push(recipe);
+            } else if (actualTag[0] === "ustensil") {
+                recipe.ustensils.forEach(ustensil => {
+                    if (recipeArrayTag.includes(recipe) === false && ustensil.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                        recipeArrayTag.push(recipe);
+                    }
+                })
+            } else if (actualTag[0] === "ingredient") {
+                recipe.ingredients.forEach(ingredient => {
+                    if (recipeArrayTag.includes(recipe) === false && ingredient.ingredient.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                        recipeArrayTag.push(recipe);
+                    }
+                })
+            }
+        })
+        if(tagArray.length===0){
+            recipeArrayTag = searchArray;}
+    });
+    displayRecette(recipeArrayTag);
+    displayElements(recipeArrayTag);
+    console.log(recipeArrayTag);
 }
 
 //Tri dans les ingredients restant 
