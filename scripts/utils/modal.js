@@ -4,17 +4,23 @@ let modalIngredient = document.getElementById("listeIngredient");
 
 //Ouverture modale appliances
 inputAppliance.addEventListener("focus", event =>{
-    modalAppliance.style.display="block";
+    modalAppliance.style.display="flex";
+    modalUstensils.style.display="none";
+    modalIngredient.style.display="none";
 });
 
 //Ouverture modale ustensiles
 inputUstensils.addEventListener("focus", event =>{
-    modalUstensils.style.display="block";
+    modalAppliance.style.display="none";
+    modalUstensils.style.display="flex";
+    modalIngredient.style.display="none";
 });
 
 //Ouverture modale ingredient
 inputIngredient.addEventListener("focus", event =>{
-    modalIngredient.style.display="block";
+    modalAppliance.style.display="none";
+    modalUstensils.style.display="none";
+    modalIngredient.style.display="flex";
 });
     
 //Fermeture des modales (non fonctionnel)

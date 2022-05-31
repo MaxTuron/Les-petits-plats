@@ -76,13 +76,17 @@ header{
   }
 }
 
+#ingredients{
+  margin: 0 0 0 15px;
+}
+
 #filtres {
   display: flex;
   flex-direction: row;
-  margin: 15px;
+  margin: 15px 15px 0 15px;
   #filtreIngredient{
     border: none;
-    background-color: blue;
+    background-color: #3282F7;
     color: white;
     #inputIngredient{
       background-color: transparent;
@@ -93,17 +97,23 @@ header{
   #filtreAppliance{
     margin: 0 10px 0 10px;
     border: none;
-    background-color: green;
+    background-color: #68D9A4;
     color: white;
     #inputAppliance{
       background-color: transparent;
       border: none;
       color: white;
+      &:focus{
+        #inputAppliance{
+          width: 350px;
+        }
+      }
     }
   }
+
   #filtreUstensils{
     border: none;
-    background-color: red;
+    background-color: #ED6454;
     color: white;
     #inputUstensils{
       background-color: transparent;
@@ -116,20 +126,32 @@ header{
 #listeAppliances, #listeIngredient, #listeUstensils{
   display: none;
   color: white;
-  list-style-type: none;
+  height: 500px;
 }
 
 #listeIngredient{
-  background-color: blue;
+  flex-direction: column;
+  background-color: #3282F7;
+  flex-wrap: wrap;
 }
 
 #listeAppliances{
-  background-color: green;
+  background-color: #68D9A4;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 #listeUstensils{
-  background-color: red;
+  background-color: #ED6454;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
+
+#appliances {
+
+}
+
+
 
 #listeTag {
   display: flex;
@@ -138,21 +160,21 @@ header{
 
 [data-tagtype="applianceTag"] {
   width: auto;
-  color: green;
+  color: #68D9A4;
   border: 5px black solid;
   margin: 5px;
 }
 
 [data-tagtype="ustensilsTag"] {
   width: auto;
-  color: red;
+  color: #ED6454;
   border: 5px black solid;
   margin: 5px;
 }
 
 [data-tagtype="ingredientsTag"] {
   width: auto;
-  color: blue;
+  color: #3282F7;
   border: 5px black solid;
   margin: 5px;
 }

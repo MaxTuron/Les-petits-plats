@@ -2,6 +2,7 @@
 let fullArray = recipes;
 let searchArray = recipes;
 let tagArray=[];
+let recipeArrayTag = searchArray;
 
 //Récupération des differents elements html
 let recipeCard = document.querySelector("#listeRecettes");
@@ -124,10 +125,10 @@ function displayElements(searchArray){
 //Input recherche globale
 inputSearch.addEventListener("keydown", function(recipe) {
     if(inputSearch.value.length>=3) {
+        console.log(inputSearch.value.length);
         search();
-    }else if (inputSearch.value.length<3){
-        displayRecette(fullArray);
-        displayElements(fullArray);
+    }else if (inputSearch.value.length===0){
+        search();
     }
 });
 
@@ -135,7 +136,7 @@ inputSearch.addEventListener("keydown", function(recipe) {
 inputAppliance.addEventListener("keydown", function(recipe) {
     if(inputAppliance.value.length>=3) {
         searchAppliance();
-    }else if (inputAppliance.value.length<3){
+    }else if (inputAppliance.value.length===0){
         let allAppliance = document.querySelectorAll(".elementAppliance");
         allAppliance.forEach(appliance =>{
             appliance.style.display="block";
@@ -147,7 +148,7 @@ inputAppliance.addEventListener("keydown", function(recipe) {
 inputUstensils.addEventListener("keydown", function(recipe) {
     if(inputUstensils.value.length>=3) {
         searchUstensiles();
-    }else if (inputUstensils.value.length<3) {
+    }else if (inputUstensils.value.length===0) {
         let allUstensils = document.querySelectorAll(".elementUstensil");
         allUstensils.forEach(ustensil => {
             ustensil.style.display = "block";
@@ -159,7 +160,7 @@ inputUstensils.addEventListener("keydown", function(recipe) {
 inputIngredient.addEventListener("keydown", function(recipe) {
     if (inputIngredient.value.length >= 3) {
         searchIngredients();
-    } else if (inputIngredient.value.length < 3) {
+    } else if (inputIngredient.value.length===0) {
         let allIngredients = document.querySelectorAll(".elementIngredients");
         allIngredients.forEach(ingredient => {
             ingredient.style.display = "block";
@@ -183,7 +184,11 @@ function deleteTag() {
                     tagArray.splice(i,1);
                 }
             }
-            searchWithTag();
+            if (tagArray.length===0){
+                search()
+            }else {
+                searchWithTag();
+            }
         }
     });
 };
@@ -207,7 +212,7 @@ function search() {
             });
         }
     });
-    
+    recipeArrayTag = searchArray;
     displayRecette(searchArray);
     displayElements(searchArray);
     console.log(tagArray);
@@ -215,33 +220,33 @@ function search() {
 }
 
 function searchWithTag() {
-    let recipeArrayTag = [];
-    searchArray.forEach(recipe => {
+    let newArrayTag = [];
+    recipeArrayTag.forEach(recipe => {
         tagArray.forEach(tag => {
             let actualTag = tag.split("-");
 
-            if (recipeArrayTag.includes(recipe) === false && actualTag[0] === "appliance" && recipe.appliance.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                recipeArrayTag.push(recipe);
+            if (newArrayTag.includes(recipe) === false && actualTag[0] === "appliance" && recipe.appliance.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                newArrayTag.push(recipe);
             } else if (actualTag[0] === "ustensil") {
                 recipe.ustensils.forEach(ustensil => {
-                    if (recipeArrayTag.includes(recipe) === false && ustensil.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                        recipeArrayTag.push(recipe);
+                    if (newArrayTag.includes(recipe) === false && ustensil.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                        newArrayTag.push(recipe);
                     }
                 })
             } else if (actualTag[0] === "ingredient") {
                 recipe.ingredients.forEach(ingredient => {
-                    if (recipeArrayTag.includes(recipe) === false && ingredient.ingredient.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                        recipeArrayTag.push(recipe);
+                    if (newArrayTag.includes(recipe) === false && ingredient.ingredient.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                        newArrayTag.push(recipe);
                     }
                 })
             }
         })
         if(tagArray.length===0){
-            recipeArrayTag = searchArray;}
+            newArrayTag = searchArray;}
     });
+    recipeArrayTag = newArrayTag;
     displayRecette(recipeArrayTag);
     displayElements(recipeArrayTag);
-    console.log(recipeArrayTag);
 }
 
 //Tri dans les ingredients restant 

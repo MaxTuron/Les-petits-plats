@@ -77,14 +77,18 @@ header img {
   width: 100%;
 }
 
+#ingredients {
+  margin: 0 0 0 15px;
+}
+
 #filtres {
   display: flex;
   flex-direction: row;
-  margin: 15px;
+  margin: 15px 15px 0 15px;
 }
 #filtres #filtreIngredient {
   border: none;
-  background-color: blue;
+  background-color: #3282F7;
   color: white;
 }
 #filtres #filtreIngredient #inputIngredient {
@@ -95,7 +99,7 @@ header img {
 #filtres #filtreAppliance {
   margin: 0 10px 0 10px;
   border: none;
-  background-color: green;
+  background-color: #68D9A4;
   color: white;
 }
 #filtres #filtreAppliance #inputAppliance {
@@ -103,9 +107,12 @@ header img {
   border: none;
   color: white;
 }
+#filtres #filtreAppliance #inputAppliance:focus #inputAppliance {
+  width: 350px;
+}
 #filtres #filtreUstensils {
   border: none;
-  background-color: red;
+  background-color: #ED6454;
   color: white;
 }
 #filtres #filtreUstensils #inputUstensils {
@@ -117,19 +124,25 @@ header img {
 #listeAppliances, #listeIngredient, #listeUstensils {
   display: none;
   color: white;
-  list-style-type: none;
+  height: 500px;
 }
 
 #listeIngredient {
-  background-color: blue;
+  flex-direction: column;
+  background-color: #3282F7;
+  flex-wrap: wrap;
 }
 
 #listeAppliances {
-  background-color: green;
+  background-color: #68D9A4;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 #listeUstensils {
-  background-color: red;
+  background-color: #ED6454;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 #listeTag {
@@ -139,21 +152,21 @@ header img {
 
 [data-tagtype=applianceTag] {
   width: auto;
-  color: green;
+  color: #68D9A4;
   border: 5px black solid;
   margin: 5px;
 }
 
 [data-tagtype=ustensilsTag] {
   width: auto;
-  color: red;
+  color: #ED6454;
   border: 5px black solid;
   margin: 5px;
 }
 
 [data-tagtype=ingredientsTag] {
   width: auto;
-  color: blue;
+  color: #3282F7;
   border: 5px black solid;
   margin: 5px;
 }
