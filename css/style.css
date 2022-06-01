@@ -26,6 +26,9 @@ header img {
   height: 44px;
   box-sizing: border-box;
 }
+#rechercheRecette input:focus {
+  outline: none;
+}
 #rechercheRecette button {
   display: block;
   justify-content: center;
@@ -42,43 +45,61 @@ header img {
 }
 #listeRecettes .recipeCards {
   display: flex;
-  flex-wrap: wrap;
   width: 32.5%;
   border-radius: 15px;
   background-color: #d3d1d1;
   margin: 5px;
+  height: auto;
+  align-items: baseline;
 }
-#listeRecettes .recipeCards .recipeTitle {
-  width: 90%;
-}
-#listeRecettes .recipeCards .recipeTime {
+#listeRecettes .recipeCards .detailRecipe {
   display: flex;
-  justify-content: center;
-  width: 10%;
-  height: 10%;
-}
-#listeRecettes .recipeCards .recipeIngredients {
-  width: 30%;
-  margin: 5px;
-}
-#listeRecettes .recipeCards .recipeDescription {
-  width: 50%;
-  height: 50%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#listeRecettes .detailRecipe {
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-#listeRecettes .detailRecipe h1, #listeRecettes .detailRecipe p, #listeRecettes .detailRecipe div {
+#listeRecettes .recipeCards .detailRecipe h1, #listeRecettes .recipeCards .detailRecipe p, #listeRecettes .recipeCards .detailRecipe div {
   width: 100%;
+}
+#listeRecettes .recipeCards .detailRecipe .fakePhoto {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  border: #C7BEBE 1px solid;
+  border-radius: 15px 15px 0 0;
+}
+#listeRecettes .recipeCards .detailRecipe .recipeTitle {
+  display: flex;
+  width: 90%;
+}
+#listeRecettes .recipeCards .detailRecipe .recipeTime {
+  display: flex;
+  justify-content: center;
+  width: 10%;
+}
+#listeRecettes .recipeCards .detailRecipe .recipeIngredients {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 5px;
+}
+#listeRecettes .recipeCards .detailRecipe .recipeDescription {
+  display: flex;
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 200px;
 }
 
 #ingredients {
   margin: 0 0 0 15px;
+}
+
+#appliances {
+  margin: 0 0 0 240px;
+}
+
+#ustensils {
+  margin: 0 0 0 464px;
 }
 
 #filtres {
@@ -87,7 +108,8 @@ header img {
   margin: 15px 15px 0 15px;
 }
 #filtres #filtreIngredient {
-  border: none;
+  border: #3282F7 5px solid;
+  border-radius: 5px;
   background-color: #3282F7;
   color: white;
 }
@@ -96,22 +118,30 @@ header img {
   border: none;
   color: white;
 }
+#filtres #filtreIngredient #inputIngredient:focus {
+  outline: none;
+}
 #filtres #filtreAppliance {
   margin: 0 10px 0 10px;
-  border: none;
+  border: #68D9A4 5px solid;
+  border-radius: 5px;
   background-color: #68D9A4;
   color: white;
 }
 #filtres #filtreAppliance #inputAppliance {
   background-color: transparent;
-  border: none;
   color: white;
+  border: none;
 }
-#filtres #filtreAppliance #inputAppliance:focus #inputAppliance {
-  width: 350px;
+#filtres #filtreAppliance #inputAppliance:focus {
+  outline: none;
+}
+#filtres #filtreAppliance #inputAppliance:focus #filtreAppliance {
+  border-radius: 5px 5px 0 0;
 }
 #filtres #filtreUstensils {
-  border: none;
+  border: #ED6454 5px solid;
+  border-radius: 5px;
   background-color: #ED6454;
   color: white;
 }
@@ -120,29 +150,38 @@ header img {
   border: none;
   color: white;
 }
+#filtres #filtreUstensils #inputUstensils:focus {
+  outline: none;
+}
 
 #listeAppliances, #listeIngredient, #listeUstensils {
   display: none;
   color: white;
-  height: 500px;
 }
 
 #listeIngredient {
   flex-direction: column;
   background-color: #3282F7;
   flex-wrap: wrap;
+  height: 500px;
 }
 
 #listeAppliances {
   background-color: #68D9A4;
   flex-direction: column;
   flex-wrap: wrap;
+  width: 13.45%;
+  height: 280px;
+  border: #68D9A4 5px solid;
+  border-radius: 0 0 5px 5px;
 }
 
 #listeUstensils {
   background-color: #ED6454;
   flex-direction: column;
   flex-wrap: wrap;
+  width: 30%;
+  height: 500px;
 }
 
 #listeTag {

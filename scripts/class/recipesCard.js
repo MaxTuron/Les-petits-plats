@@ -20,6 +20,7 @@ class recipesInfos {
         infoRecipe.appendChild(detailRecipe);
         detailRecipe.className=("detailRecipe");
         detailRecipe.innerHTML = `
+        <img src="../../assets/logo/rectangle.svg" class="fakePhoto">
         <h2 class="recipeTitle">${this.name}</h2>        
         <p class="recipeTime"><b>${this.time}</b><i class="fas fa-clock"></i></p>`;
 
