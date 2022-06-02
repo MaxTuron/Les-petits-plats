@@ -22,7 +22,7 @@ class recipesInfos {
         detailRecipe.innerHTML = `
         <img src="../../assets/logo/rectangle.svg" class="fakePhoto">
         <h2 class="recipeTitle">${this.name}</h2>        
-        <p class="recipeTime"><b>${this.time}</b><i class="fas fa-clock"></i></p>`;
+        <p class="recipeTime"><i class="fas fa-clock"></i><b>${this.time}</p>`;
 
         const ingedientsRecipe = document.createElement("div");
         ingedientsRecipe.className="recipeIngredients";

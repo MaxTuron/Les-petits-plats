@@ -23,7 +23,7 @@ inputIngredient.addEventListener("focus", event =>{
     modalIngredient.style.display="flex";
 });
     
-//Fermeture des modales (non fonctionnel)
+//Fermeture des modales
 document.addEventListener("click",event =>{
     if(event.target!==inputAppliance && 
         event.target!==inputUstensils && 

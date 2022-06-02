@@ -123,6 +123,10 @@ header{
       &:focus{
         outline: none;
       }
+      &:focus ~ #arrowIngredient{
+        transform: rotate(180deg);
+        transition-duration:1s;
+      }
     }
   }
   #filtreAppliance{
@@ -137,9 +141,10 @@ header{
       border: none;
       &:focus{
         outline: none;
-        #filtreAppliance{
-          border-radius: 5px 5px 0 0;
-        }
+      }
+      &:focus ~ #arrowAppliance{
+        transform: rotate(180deg);
+        transition-duration:1s;
       }
     }
   }
@@ -156,6 +161,10 @@ header{
       &:focus{
         outline: none;
       }
+      &:focus ~ #arrowUstensil{
+        transform: rotate(180deg);
+        transition-duration:1s;
+      }
     }
   }
 }
@@ -171,14 +180,16 @@ header{
   background-color: #3282F7;
   flex-wrap: wrap;
   height: 500px;
+  border: #3282F7 5px solid;
+  border-radius: 0 0 5px 5px;
 }
 
 #listeAppliances{
   background-color: #68D9A4;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 13.45%;
-  height: 280px;
+  width: fit-content;
+  height: fit-content;
   border: #68D9A4 5px solid;
   border-radius: 0 0 5px 5px;
 }
@@ -189,13 +200,9 @@ header{
   flex-wrap: wrap;
   width: 30%;
   height: 500px;
+  border: #ED6454 5px solid;
+  border-radius: 0 0 5px 5px;
 }
-
-#appliances {
-
-}
-
-
 
 #listeTag {
   display: flex;
@@ -204,21 +211,47 @@ header{
 
 [data-tagtype="applianceTag"] {
   width: auto;
-  color: #68D9A4;
-  border: 5px black solid;
+  color: white;
+  background-color: #68D9A4;
+  border: 5px transparent solid;
+  border-radius: 5px;
   margin: 5px;
+  i{
+    color: white;
+    margin: 2px 0 0 3px;
+  }
 }
 
 [data-tagtype="ustensilsTag"] {
   width: auto;
-  color: #ED6454;
-  border: 5px black solid;
+  color: white;
+  background-color: #ED6454;
+  border: 5px transparent solid;
+  border-radius: 5px;
   margin: 5px;
+  i{
+    color: white;
+    margin: 2px 0 0 3px;
+  }
 }
 
 [data-tagtype="ingredientsTag"] {
   width: auto;
-  color: #3282F7;
-  border: 5px black solid;
+  color: white;
+  background-color: #3282F7;
+  border: 5px transparent solid;
+  border-radius: 5px;
   margin: 5px;
+  i{
+    color: white;
+    margin: 2px 0 0 3px;
+  }
+}
+
+#ingredients, #ustensils, #appliances{
+  border-radius: 5px;
+}
+
+.fa-clock{
+  margin: 5px 2px 0 0;
 }

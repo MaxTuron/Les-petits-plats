@@ -27,7 +27,7 @@ function applyEventListener() {
         appliance.addEventListener('click', event => {
             let newTag = "appliance-" + appliance.innerHTML;
             if (tagArray.includes(newTag) === false) {
-
+                console.log("toto")
                 tagArray.push(newTag);
                 
                 let applianceTagCard = document.querySelector("#listeTag");
@@ -45,7 +45,7 @@ function applyEventListener() {
         ustensil.addEventListener('click', event => {
             let newTag = "ustensil-" + ustensil.innerHTML;
             if (tagArray.includes(newTag) === false) {
-                
+                console.log("toto")
                 tagArray.push(newTag);
                 
                 let unstensilTagCard = document.querySelector("#listeTag");
@@ -125,7 +125,6 @@ function displayElements(searchArray){
 //Input recherche globale
 inputSearch.addEventListener("keydown", function(recipe) {
     if(inputSearch.value.length>=3) {
-        console.log(inputSearch.value.length);
         search();
     }else if (inputSearch.value.length===0){
         search();
@@ -215,12 +214,11 @@ function search() {
     recipeArrayTag = searchArray;
     displayRecette(searchArray);
     displayElements(searchArray);
-    console.log(tagArray);
-    console.log(searchArray);
 }
 
 function searchWithTag() {
     let newArrayTag = [];
+    console.log(tagArray);
     recipeArrayTag.forEach(recipe => {
         tagArray.forEach(tag => {
             let actualTag = tag.split("-");
@@ -241,10 +239,11 @@ function searchWithTag() {
                 })
             }
         })
-        if(tagArray.length===0){
+        if(tagArray.length==0){
             newArrayTag = searchArray;}
     });
     recipeArrayTag = newArrayTag;
+    console.log(recipeArrayTag);
     displayRecette(recipeArrayTag);
     displayElements(recipeArrayTag);
 }
