@@ -24,10 +24,9 @@ function displayRecette(searchArray) {
 function applyEventListener() {
 
     document.querySelectorAll(".elementAppliance").forEach(appliance => {
-        appliance.addEventListener('click', event => {
+        appliance.addEventListener('click',event => {
             let newTag = "appliance-" + appliance.innerHTML;
             if (tagArray.includes(newTag) === false) {
-                console.log("toto")
                 tagArray.push(newTag);
                 
                 let applianceTagCard = document.querySelector("#listeTag");
@@ -220,26 +219,33 @@ function searchWithTag() {
     let newArrayTag = [];
     console.log(tagArray);
     recipeArrayTag.forEach(recipe => {
+        let boolean = true;
         tagArray.forEach(tag => {
             let actualTag = tag.split("-");
-
-            if (newArrayTag.includes(recipe) === false && actualTag[0] === "appliance" && recipe.appliance.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                newArrayTag.push(recipe);
+            
+            if (actualTag[0] === "appliance" && !recipe.appliance.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                console.log("appliance");
+                boolean=false;
             } else if (actualTag[0] === "ustensil") {
                 recipe.ustensils.forEach(ustensil => {
-                    if (newArrayTag.includes(recipe) === false && ustensil.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                        newArrayTag.push(recipe);
+                    if (!ustensil.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                        console.log("ustensil");
+                        boolean=false;
                     }
                 })
             } else if (actualTag[0] === "ingredient") {
                 recipe.ingredients.forEach(ingredient => {
-                    if (newArrayTag.includes(recipe) === false && ingredient.ingredient.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                        newArrayTag.push(recipe);
+                    if (!ingredient.ingredient.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                        console.log("ingredient");
+                        boolean=false;
                     }
                 })
             }
         })
-        if(tagArray.length==0){
+        if (boolean === true && newArrayTag.includes(recipe) === false){
+            newArrayTag.push(recipe);
+        }
+        if(tagArray.length === 0){
             newArrayTag = searchArray;}
     });
     recipeArrayTag = newArrayTag;
