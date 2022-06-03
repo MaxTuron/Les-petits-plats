@@ -7,6 +7,7 @@ header{
     width: 20%;
   }
 }
+
 #formSearch {
   width: 100%;
 }
@@ -17,23 +18,20 @@ header{
   border-radius: 5px;
   margin: 0 15% 0 15%;
 
-  input{
+  #inputRecherche{
     width: 100%;
     border-radius: 5px;
     background-color: #d2d0d0;
     height: 44px;
     box-sizing: border-box;
+    }
     &:focus{
       outline: none;
     }
-  }
-  button{
-    display: block;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    background-color: #aba9a9;
-    width: 4%;
+  i{
+    position: absolute;
+    right: 11%;
+    margin-top: 14px;
   }
 }
 

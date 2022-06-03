@@ -19,23 +19,20 @@ header img {
   border-radius: 5px;
   margin: 0 15% 0 15%;
 }
-#rechercheRecette input {
+#rechercheRecette #inputRecherche {
   width: 100%;
   border-radius: 5px;
   background-color: #d2d0d0;
   height: 44px;
   box-sizing: border-box;
 }
-#rechercheRecette input:focus {
+#rechercheRecette:focus {
   outline: none;
 }
-#rechercheRecette button {
-  display: block;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  background-color: #aba9a9;
-  width: 4%;
+#rechercheRecette i {
+  position: absolute;
+  right: 11%;
+  margin-top: 14px;
 }
 
 #listeRecettes {

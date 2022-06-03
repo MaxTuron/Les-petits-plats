@@ -166,35 +166,16 @@ inputIngredient.addEventListener("keydown", function(recipe) {
     }
 });
 
-//Suppression du tag en HTML et dans le tableau des tags
-function deleteTag() {
-    document.addEventListener("click", event => {
-        if (event.target.className.includes("close") === true) {
-            let fullTag = event.target.parentNode;
-            let tagValue = fullTag.innerText;
-            
-            //permet de supprimer le tag visuellement (HTML balise <p>)
-            fullTag.remove();
-            
-            //Permet de supprimer le tag du tableau
-            for (i=0; i <tagValue.length; i++){
-                if (tagArray[i] === tagValue){
-                    tagArray.splice(i,1);
-                }
-            }
-            if (tagArray.length===0){
-                search()
-            }else {
-                searchWithTag();
-            }
-        }
-    });
-};
 
 //Fonction de recherche globale
 function search() {
     searchArray=[];
     let inputValue = document.getElementById("inputRecherche").value;
+    let tagList = document.getElementById("listeTag");
+    if (tagArray.length !== 0){
+        tagArray = [];
+        tagList.innerHTML="";
+    }
     
     recipes.forEach(recipe =>{
         if (searchArray.includes(recipe)===false) {
@@ -224,20 +205,17 @@ function searchWithTag() {
             let actualTag = tag.split("-");
             
             if (actualTag[0] === "appliance" && !recipe.appliance.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                console.log("appliance");
                 boolean=false;
             } else if (actualTag[0] === "ustensil") {
                 recipe.ustensils.forEach(ustensil => {
                     if (!ustensil.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                        console.log("ustensil");
-                        boolean=false;
+                        boolean = false;
                     }
                 })
             } else if (actualTag[0] === "ingredient") {
                 recipe.ingredients.forEach(ingredient => {
                     if (!ingredient.ingredient.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                        console.log("ingredient");
-                        boolean=false;
+                        boolean = false;
                     }
                 })
             }
@@ -301,7 +279,6 @@ function searchAppliance() {
 function init () {
   displayRecette(fullArray);
   displayElements(fullArray);
-  deleteTag();
 }
 
 init ();
