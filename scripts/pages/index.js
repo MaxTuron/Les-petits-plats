@@ -169,7 +169,33 @@ inputIngredient.addEventListener("keydown", function(recipe) {
 
 //Fonction de recherche globale
 function search() {
+    searchArray=[];
+    let inputValue = document.getElementById("inputRecherche").value;
+    let tagList = document.getElementById("listeTag");
+    if (tagArray.length !== 0){
+        tagArray = [];
+        tagList.innerHTML="";
+    }
 
+    for (i = 0; i<recipes.length; i++){
+        if (searchArray.includes(recipes[i])===false) {
+            if (recipes[i].name.toLowerCase().includes(inputValue.toLowerCase()) || recipes[i].description.toLowerCase().includes(inputValue.toLowerCase())) {
+                searchArray.push(recipes[i]);
+            }         
+        }
+        for (j = 0; j<recipes[i].ingredients.length; j++){
+            console.log(recipes[i].ingredients[j].ingredient);
+            if (recipes[i].ingredients[j].ingredient.toLowerCase().includes(inputValue.toLowerCase())) {
+                if (searchArray.includes(recipes[i])===false) {
+                    searchArray.push(recipes[i]);
+                }
+            }
+        }
+    }
+    
+    recipeArrayTag = searchArray;
+    displayRecette(searchArray);
+    displayElements(searchArray);
 }
 
 function searchWithTag() {
