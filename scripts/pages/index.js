@@ -184,7 +184,6 @@ function search() {
             }         
         }
         for (j = 0; j<recipes[i].ingredients.length; j++){
-            console.log(recipes[i].ingredients[j].ingredient);
             if (recipes[i].ingredients[j].ingredient.toLowerCase().includes(inputValue.toLowerCase())) {
                 if (searchArray.includes(recipes[i])===false) {
                     searchArray.push(recipes[i]);
