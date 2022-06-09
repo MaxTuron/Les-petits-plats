@@ -10,6 +10,7 @@ let inputSearch = document.getElementById("inputRecherche");
 let inputAppliance= document.getElementById("inputAppliance");
 let inputUstensils = document.getElementById("inputUstensils");
 let inputIngredient = document.getElementById("inputIngredient");
+let zeroResult = document.getElementById("zeroResult");
 
 //Affichage des recettes
 function displayRecette(searchArray) {
@@ -190,6 +191,11 @@ function search() {
                 }
             });
         }
+        if (searchArray.length === 0){
+            zeroResult.style.display="block";
+        } else {
+            zeroResult.style.display="none";
+        }
     });
     recipeArrayTag = searchArray;
     displayRecette(searchArray);
@@ -227,6 +233,13 @@ function searchWithTag() {
             newArrayTag = searchArray;}
     });
     recipeArrayTag = newArrayTag;
+
+    if (recipeArrayTag.length === 0){
+        zeroResult.style.display="block";
+    } else {
+        zeroResult.style.display="none";
+    }
+    
     console.log(recipeArrayTag);
     displayRecette(recipeArrayTag);
     displayElements(recipeArrayTag);
