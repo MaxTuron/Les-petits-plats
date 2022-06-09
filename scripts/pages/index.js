@@ -204,29 +204,43 @@ function search() {
 
 function searchWithTag() {
     let newArrayTag = [];
-    console.log(tagArray);
+
+    if (tagArray.length>=1){
+        recipeArrayTag = searchArray;
+    }
+    
     recipeArrayTag.forEach(recipe => {
         let boolean = true;
         tagArray.forEach(tag => {
             let actualTag = tag.split("-");
             
+            
             if (actualTag[0] === "appliance" && !recipe.appliance.toLowerCase().includes(actualTag[1].toLowerCase())) {
                 boolean=false;
             } else if (actualTag[0] === "ustensil") {
+                let boolean2 = false;
+                
                 recipe.ustensils.forEach(ustensil => {
-                    if (!ustensil.toLowerCase().includes(actualTag[1].toLowerCase())) {
-                        boolean = false;
+                    if (ustensil.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                        boolean2 = true;
                     }
-                })
+                });
+                if (boolean2 == false){
+                    boolean = false;
+                }
             } else if (actualTag[0] === "ingredient") {
-                recipe.ingredients.forEach(ingredient => {
-                    if (!ingredient.ingredient.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                    let boolean2 = false;
+                    recipe.ingredients.forEach(ingredient => {
+                    if (ingredient.ingredient.toLowerCase().includes(actualTag[1].toLowerCase())) {
+                        boolean2 = true;
+                    }
+                });
+                    if (boolean2 == false){
                         boolean = false;
                     }
-                })
             }
         })
-        if (boolean === true && newArrayTag.includes(recipe) === false){
+        if (boolean === true){
             newArrayTag.push(recipe);
         }
         if(tagArray.length === 0){

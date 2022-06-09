@@ -178,6 +178,7 @@ header img {
   flex-direction: column;
   flex-wrap: wrap;
   border-radius: 0 0 5px 5px;
+  list-style: none;
 }
 
 #listeIngredient {
