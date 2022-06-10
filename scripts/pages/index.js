@@ -45,7 +45,6 @@ function applyEventListener() {
         ustensil.addEventListener('click', event => {
             let newTag = "ustensil-" + ustensil.innerHTML;
             if (tagArray.includes(newTag) === false) {
-                console.log("toto")
                 tagArray.push(newTag);
                 
                 let unstensilTagCard = document.querySelector("#listeTag");
