@@ -179,7 +179,7 @@ function search() {
     
     recipes.forEach(recipe =>{
         if (searchArray.includes(recipe)===false) {
-            if (recipe.name.toLowerCase().includes(inputValue.toLowerCase()) || recipe.appliance.toLowerCase().includes(inputValue.toLowerCase())) {
+            if (recipe.name.toLowerCase().includes(inputValue.toLowerCase()) || recipe.description.toLowerCase().includes(inputValue.toLowerCase())) {
                 searchArray.push(recipe);
             }
             recipe.ingredients.forEach(ingredient =>{
