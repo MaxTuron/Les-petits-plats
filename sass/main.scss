@@ -24,10 +24,10 @@ header{
     background-color: #d2d0d0;
     height: 44px;
     box-sizing: border-box;
-    }
-    &:focus{
-      outline: none;
-    }
+  }
+  &:focus{
+    outline: none;
+  }
   i{
     position: absolute;
     right: 11%;
@@ -93,16 +93,22 @@ header{
   }
 }
 
+#zeroResult {
+  display: none;
+}
+
 #ingredients{
-  margin: 0 0 0 15px;
+  margin: 0 5px 0 5px;
+  column-count: 4;
 }
 
 #appliances{
-  margin: 0 0 0 240px;
+  margin: 0 5px 0 5px;
 }
 
 #ustensils{
-  margin: 0 0 0 464px;
+  margin: 0 5px 0 5px;
+  column-count: 3;
 }
 
 #filtres {
@@ -114,6 +120,10 @@ header{
     border-radius: 5px;
     background-color: #3282F7;
     color: white;
+    height: fit-content;
+    &:after{
+      border-radius: 5px 5px 0 0;
+    }
     #inputIngredient{
       background-color: transparent;
       border: none;
@@ -133,6 +143,7 @@ header{
     border-radius: 5px;
     background-color: #68D9A4;
     color: white;
+    height: fit-content;
     #inputAppliance{
       background-color: transparent;
       color: white;
@@ -152,6 +163,7 @@ header{
     border-radius: 5px;
     background-color: #ED6454;
     color: white;
+    height: fit-content;
     #inputUstensils{
       background-color: transparent;
       border: none;
@@ -170,36 +182,24 @@ header{
 #listeAppliances, #listeIngredient, #listeUstensils{
   display: none;
   color: white;
-
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 0 0 5px 5px;
+  list-style:none;
 }
 
 #listeIngredient{
-  flex-direction: column;
   background-color: #3282F7;
-  flex-wrap: wrap;
-  height: 500px;
-  border: #3282F7 5px solid;
-  border-radius: 0 0 5px 5px;
+  .elementIngredients{
+  }
 }
 
 #listeAppliances{
   background-color: #68D9A4;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: fit-content;
-  height: fit-content;
-  border: #68D9A4 5px solid;
-  border-radius: 0 0 5px 5px;
 }
 
 #listeUstensils{
   background-color: #ED6454;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 30%;
-  height: 500px;
-  border: #ED6454 5px solid;
-  border-radius: 0 0 5px 5px;
 }
 
 #listeTag {

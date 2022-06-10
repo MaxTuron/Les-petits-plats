@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/4389809c4d.js" crossorigin="anonymous"></script>
-        <title>Les petits plats</title>
-    </head>
-    <body>
-        <header>
-            <img alt="Logo" src="assets/logo/PetitsPlatsLogo.png">
-            <div id="rechercheRecette">
-                <input id="inputRecherche" aria-label="inputRecherche" placeholder="Recherche">
-                <i class="fas fa-search"></i>
-            </div>
-        </header>
+<head>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4389809c4d.js" crossorigin="anonymous"></script>
+    <title>Les petits plats</title>
+</head>
+<body>
+<header>
+    <img alt="logo" src="assets/logo/PetitsPlatsLogo.png">
+    <div id="rechercheRecette">
+        <input id="inputRecherche" aria-label="inputRecherche" placeholder="Recherche">
+        <i class="fas fa-search"></i>
+    </div>
+</header>
 
-        <main>
-            <div id="tagZone">
-                <div id="listeTag">
+<main>
+    <div id="tagZone">
+        <div id="listeTag">
 
-                </div>
-            </div>
-            <div id="filtres">
-                <div id="filtreIngredient">
-                    <input id="inputIngredient" aria-label="inputIngredient" placeholder="Ingredients"><i id="arrowIngredient" class="fas fa-angle-down"></i>
-                </div>
-                <div id="filtreAppliance">
-                    <input id="inputAppliance" aria-label="inputAppliance" placeholder="Appareils"><i id="arrowAppliance" class="fas fa-angle-down"></i>
-                </div>
-                <div id="filtreUstensils">
-                    <input id="inputUstensils" aria-label="inputUstensiles" placeholder="Ustensiles"><i id="arrowUstensil" class="fas fa-angle-down"></i>
-                </div>
-            </div>
-            <div>
-                <div id="ingredients">
+        </div>
+    </div>
+    <div id="filtres">
+        <div id="filtreIngredient">
+            <input id="inputIngredient" aria-label="inputIngredient" placeholder="Ingredients"><i id="arrowIngredient" class="fas fa-angle-down"></i>
+            <div id="ingredients">
                 <ul id="listeIngredient"></ul>
             </div>
-                <div id="ustensils">
-                    <ul id="listeUstensils"></ul>
-                </div>
-                <div id="appliances">
-                    <ul id="listeAppliances"></ul>
-                </div>
-            </div>
-            <div id="listeRecettes">
-                <div class="resultat_recherche"></div>
-            </div>
-        </main>
+        </div>
+        <div id="filtreAppliance">
+            <input id="inputAppliance" aria-label="inputAppliance" placeholder="Appareils"><i id="arrowAppliance" class="fas fa-angle-down"></i>
 
-        <script src="data/recipes.js"></script>
-        <script src="scripts/class/recipesCard.js"></script>
-        <script src="scripts/factory/elementsCard.js"></script>
-        <script src="scripts/pages/index.js"></script>
-        <script src="scripts/utils/modal.js"></script>
-        <script src="scripts/factory/tagCard.js"></script>
-    </body>
+            <div id="appliances">
+                <ul id="listeAppliances"></ul>
+            </div>
+        </div>
+        <div id="filtreUstensils">
+            <input id="inputUstensils" aria-label="inputUstensiles" placeholder="Ustensiles"><i id="arrowUstensil" class="fas fa-angle-down"></i>
+            <div id="ustensils">
+                <ul id="listeUstensils"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="listeRecettes">
+        <div class="resultat_recherche">
+        </div>
+    </div>
+
+    <p id="zeroResult"> Aucun résultat ne correspond à votre recherche</p>
+</main>
+
+<script src="data/recipes.js"></script>
+<script src="scripts/class/recipesCard.js"></script>
+<script src="scripts/factory/elementsCard.js"></script>
+<script src="scripts/pages/index.js"></script>
+<script src="scripts/utils/modal.js"></script>
+<script src="scripts/factory/tagCard.js"></script>
+</body>
 </html>
