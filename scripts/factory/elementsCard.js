@@ -7,8 +7,6 @@ function applianceFactory(data) {
         appliances.className="elementAppliance";
         appliances.innerHTML = `${appliance}`;
 
-        
-        
         return (appliances);
     }
     return {appliance, applianceDOM}
