@@ -17,11 +17,12 @@
 </header>
 
 <main>
+    <!-- Div permettant l'affichage des tags -->
     <div id="tagZone">
-        <div id="listeTag">
-
-        </div>
+        <div id="listeTag"></div>
     </div>
+
+    <!-- Div permettant l'affichage des filtres avec la liste des éléments -->
     <div id="filtres">
         <div id="filtreIngredient">
             <input id="inputIngredient" aria-label="inputIngredient" placeholder="Ingredients"><i id="arrowIngredient" class="fas fa-angle-down"></i>
@@ -31,7 +32,6 @@
         </div>
         <div id="filtreAppliance">
             <input id="inputAppliance" aria-label="inputAppliance" placeholder="Appareils"><i id="arrowAppliance" class="fas fa-angle-down"></i>
-
             <div id="appliances">
                 <ul id="listeAppliances"></ul>
             </div>
@@ -43,15 +43,17 @@
             </div>
         </div>
     </div>
-
+    <!-- Div permettant l'affichage des recettes -->
     <div id="listeRecettes">
         <div class="resultat_recherche">
         </div>
     </div>
 
+    <!-- Affichage du message d'erreur -->
     <p id="zeroResult"> Aucun résultat ne correspond à votre recherche</p>
 </main>
 
+<!-- Import des scripts -->
 <script src="data/recipes.js"></script>
 <script src="scripts/class/recipesCard.js"></script>
 <script src="scripts/factory/elementsCard.js"></script>

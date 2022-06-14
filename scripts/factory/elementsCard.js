@@ -1,20 +1,19 @@
+//Fonction permettant l'affichage des appliances dans la liste
 function applianceFactory(data) {
     let appliance = data;
     
     function applianceDOM() {
-        
+        //Création de la balise <li> et remplissage avec les éléments
         let appliances = document.createElement("li");
         appliances.className="elementAppliance";
         appliances.innerHTML = `${appliance}`;
 
-        
-        
         return (appliances);
     }
     return {appliance, applianceDOM}
 }
 
-
+//Fonction permettant l'affichage des ustensiles dans la liste
 function ustensilsFactory(data) {
     let ustensils = data;
     
@@ -29,6 +28,7 @@ function ustensilsFactory(data) {
     return {ustensils, ustensilsDOM}
 }
 
+//Fonction permettant l'affichage des ingredients dans la liste
 function ingredientFactory(data) {
     let ingredient = data;
     

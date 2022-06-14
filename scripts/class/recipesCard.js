@@ -1,3 +1,4 @@
+//Classe permettant de créer les objets recettes qui serons ensuite affiché sur la page principale
 class recipesInfos {
     constructor(data) {
         this.id = data.id
