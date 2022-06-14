@@ -2,24 +2,29 @@ function applianceTagFactory(data) {
     let appliance = data;
 
     function applianceTagDOM() {
+        //Division du tag en 2 parties (catégorie - nom)
         let actualTag = appliance.split('-');
+
+        //Création et remplissage du tag
         let appliancesTag = document.createElement("p");
         appliancesTag.innerHTML = `${actualTag[1]} <i class="fas fa-times close"></i>`;
         appliance.className="tag";
         appliancesTag.setAttribute("data-tagtype","applianceTag");
+
+        //Déclaration de l'éventListener
         appliancesTag.addEventListener("click", event => {
+            //Si la cible du click de l'utilisateur contiens la classe "close"
             if (event.target.className.includes("close") === true) {
-                
-                
-                //permet de supprimer le tag visuellement (HTML balise <p>)
+                //Supprime le tag visuellement (HTML balise <p>)
                 appliancesTag.remove();
 
-                //Permet de supprimer le tag du tableau
+                //Supprime le tag du tableau des tags
                 for (i=0; i <appliance.length; i++){
                     if (tagArray[i] === appliance){
                         tagArray.splice(i,1);
                     }
                 }
+
                 if (tagArray.length===0){
                     search()
                 }else {
@@ -27,7 +32,6 @@ function applianceTagFactory(data) {
                 }
             }
         })
-        
         return (appliancesTag);
     }
     return {appliance, applianceTagDOM}
@@ -44,11 +48,7 @@ function ustensilsTagFactory(data) {
         ustensilsTag.setAttribute("data-tagtype","ustensilsTag");
         ustensilsTag.addEventListener("click", event => {
             if (event.target.className.includes("close") === true) {
-
-                //permet de supprimer le tag visuellement (HTML balise <p>)
                 ustensilsTag.remove();
-
-                //Permet de supprimer le tag du tableau
                 for (i=0; i <ustensil.length; i++){
                     if (tagArray[i] === ustensil){
                         tagArray.splice(i,1);
@@ -77,11 +77,7 @@ function ingredientsTagFactory(data) {
         ingredientsTag.setAttribute("data-tagtype","ingredientsTag");
         ingredientsTag.addEventListener("click", event => {
             if (event.target.className.includes("close") === true) {
-
-                //permet de supprimer le tag visuellement (HTML balise <p>)
                 ingredientsTag.remove();
-
-                //Permet de supprimer le tag du tableau
                 for (i=0; i <ingredient.length; i++){
                     if (tagArray[i] === ingredient){
                         tagArray.splice(i,1);
